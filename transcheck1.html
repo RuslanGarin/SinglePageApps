@@ -1,0 +1,2600 @@
+<!DOCTYPE html>
+<!--
+Simple check list for all things Translation Department in MotionPoint.
+
+Created by Ruslan Garin. 2020-2021.
+rgarin@motionpoint.com
+-->
+
+<html>
+<head>
+<title>TransCheck - quick to-do lists</title>
+<meta http-equiv=“Pragma” content=”no-cache”>
+<meta http-equiv=“Expires” content=”-1″>
+<meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+</head>
+
+<link rel="shortcut icon" href="https://lh3.googleusercontent.com/proxy/xE_30tGG-ldP7slyOr5U2s7cmNcAy5sBWX_zftlZkh320KfGD2R-sZiNJuIxICQoER6EeEymeuiuFnIcVll2sbIXy1qc6w8KRFrrihxC1wqBK1KaIDSA3CV-y9a5VtWt3qVmcBbxCtOaS2zgJL0SljHIpOOyDrXaY_xF1IqN8S-AwSSYNw" />
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cabin:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital@1&display=swap" rel="stylesheet">
+
+<meta name="version.increment" content="version 1.9b" />
+
+<!-- What if we're using Internet Explorer? -->
+<script>
+if (navigator.appName == 'Microsoft Internet Explorer' ||  !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/)) || (typeof $.browser !== "undefined" && $.browser.msie == 1))
+{
+
+  alert("Oh no! This is Internet Explorer! :( \nUnfortunately, I am really bad at dealing with this browser <:( \nBut I am good with Chrome, FireFox and Opera! :)");
+  window.location = "https://motionportal.motionpoint.com/";
+  alert("You're now being redirected to MotionPortal ticket management system.");
+  
+}
+</script>
+
+<!-- All the styling goes below -->
+<style>
+body {
+
+background: #f2f4f7;
+
+
+transition: 0.1s;
+}
+
+a:visited {
+  color:blue;
+}
+
+a {
+	background: #fff;
+	padding: 2px 6px 2px 6px;
+	border-radius: 5px;
+}
+
+#lsContainer {
+background: #fff;
+display: inline-block;
+position: fixed;
+top: 3%;
+left: 25%;
+width: 950px;
+min-height: 95% !important;
+box-shadow: 1px 1px 15px grey;
+border-radius: 10px;
+overflow: hidden;
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+transition: 0.5s;
+}
+
+@media screen and (max-width: 1366px) {
+
+	#lsContainer {
+	
+		position: fixed;
+		top: 1%;
+		left: 15%;
+	
+	}
+}
+
+@media screen and (max-width: 1600px) {
+
+	#lsContainer {
+	
+		position: fixed;
+		top: 0.5%;
+		height: 99%;
+		left: 20%;
+	
+	}
+}
+
+@media screen and (max-width: 1920px) {
+
+	#lsContainer {
+	
+		position: fixed;
+		top: 0.5%;
+		height: 99%;
+		left: 25%;
+	
+	}
+}
+
+
+
+@media screen and (max-height: 720px) {
+
+	#lsContainer {
+	
+		position: fixed;
+		top: 0.5%;
+		height: 99%;
+		left: 15%;
+	
+	}
+}
+
+@media screen and (max-height: 768px) {
+
+	#lsContainer {
+	
+		position: fixed;
+		top: 0.5%;
+		height: 99%;
+		left: 15%;
+	
+	}
+	
+	#reWind {
+		
+		position: absolute;
+		bottom: 50px !important;
+	}
+}
+
+
+
+
+
+
+
+#toolName {
+font-family: 'Nerko One', cursive;
+font-size: 34px;
+position: absolute;
+top: -20px;
+left: 10px;
+overflow: hidden;
+overflow-y: hidden;
+overflow-x: hidden;
+background: #fff;
+padding: 0px 0px 0px 0px;
+z-index: 100;
+transition: 0.5s;
+}
+
+#toolVersion {
+font-family: 'Arial';
+font-size: 10px;
+position: absolute;
+top: 15px;
+right: 15px;
+float: left;
+width: 160px;
+height: 25px;
+padding: 10px 5px 5px 5px;
+background: #fff;
+border-style: dotted;
+border-color: grey;
+border-width: 1px;
+border-radius: 10px;
+z-index: 2;
+transition: 0.5s;
+}
+
+#lsSelector {
+background: #e8e8e8;
+display: inline;
+position: absolute;
+top: 75px;
+left: 10px;
+width: 97.5%;
+height: 50px;
+box-shadow: inset 0px 0px 5px 2px #d9d9d9;
+border-radius: 10px;
+z-index:102
+overflow: hidden;
+transition: 0.5s;
+}
+
+.lsSelButton {
+font-family: 'Oswald', sans-serif;
+padding: 5px 5px 5px 5px;
+background: #85f3ff;
+border-style: dashed;
+border-color: grey;
+border-width: 1px;
+border-radius: 10px;
+width: 95px;
+text-align: center;
+box-shadow: 1px 1px 3px grey;
+overflow: hidden;
+overflow-x: hidden;
+overflow-y: hidden;
+transition: 0.5s;
+}
+
+.lsSelButton:hover {
+background: #4ba4ad;
+cursor: pointer;
+border-color: white;
+border-style: solid;
+border-width: 2px;
+}
+
+.lsSelButton:focus {
+background: #1cc4d6;
+cursor: pointer;
+}
+
+.lsSelButton:active {
+background: #1cd68f;
+cursor: grabbing;
+box-shadow: inset 1px 1px 5px 2px grey;
+}
+
+#lsPTO {
+position: absolute;
+top: -10px;
+left: 5px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#lsCancellation {
+position: absolute;
+top: -10px;
+left: 115px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#lsAccReassign {
+position: absolute;
+top: -10px;
+left: 225px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#lsWEList {
+position: absolute;
+top: -10px;
+left: 335px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#lsAudilist {
+position: absolute;
+top: -10px;
+left: 445px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#lsLiveEdit {
+position: absolute;
+top: -10px;
+left: 555px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#lsCReport {
+position: absolute;
+top: -10px;
+left: 665px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#lsMyList {
+position: absolute;
+top: -10px;
+left: 775px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+/* Here we put styling for the tiles and their respective lists */
+
+.todoList {
+position: absolute;
+top: 150px;
+left: 20px;
+background: #fff;
+width: 910px;
+height: 720px;
+border-color: grey;
+border-radius: 10px;
+border-style: solid;
+border-width: 2px;
+overflow: scroll;
+overflow-x: hidden;
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+transition: 0.5s;
+}
+
+@media screen and (max-height: 768px) {
+
+	.todoList {
+	
+		position: absolute;
+		height: 580px;
+	
+	}
+}
+
+@media screen and (max-height: 720px) {
+
+	.todoList {
+	
+		position: absolute;
+		height: 520px;
+	
+	}
+}
+
+
+
+
+/* Style the listed items */
+ul li {
+	width: 825px;
+	color: #091e44;
+    cursor: pointer;
+    position: relative;
+	left: -25px;
+	padding: 6px 20px 6px 30px;
+    
+	background: #ffe9d4;
+    
+	font-size: 18px;
+    transition: 0.2s;
+	font-family: Arial;
+	overflow: hidden;
+	
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+ul > li:first-of-type {
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+ul > li:last-of-type {
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+    background: #fabd82;
+}
+
+/* Change color on hover */
+ul li:hover {
+    background: #a2c6e8;
+}
+
+ul li.checked {
+    background: #5bb361;
+    color: #fff;
+    text-decoration: line-through;
+	text-decoration-style: wavy;
+	text-decoration-color: black;
+	filter: brightness(15%);
+	transition: 1.9s;
+}
+
+ul li.checkedNight {
+    background: #271230;
+    color: #fff;
+    text-decoration: line-through;
+	text-decoration-style: wavy;
+	text-decoration-color: black;
+	filter: brightness(10%);
+	transition: 1.9s;
+}
+
+
+.listName {
+font-family: 'Rubik', sans-serif;
+padding: 0px 10px 0px 10px;
+background: #e4ede4;
+width: 99%;
+transition: 0.5s;
+}
+
+.procedureName {
+	font-family: 'Bree Serif', serif;
+	font-size: 24px;
+	position: relative;
+	text-align: center;
+	transition: 0.5s;
+	
+}
+
+
+
+/* Tiles put here for z-index properties */
+
+#todoPTO {
+	z-index: 200;
+	filter: blur(5px);
+	opacity: 0;
+	transition: 0.8s;
+}
+
+#todoPrjCancel {
+	z-index: 300;
+	filter: blur(5px);
+	opacity: 0;
+	transition: 0.8s;
+}
+
+#todoAccReassigned {
+	z-index: 400;
+	filter: blur(5px);
+	opacity: 0;
+	transition: 0.8s;
+}
+
+#todoWEList {
+	z-index: 400;
+	filter: blur(5px);
+	opacity: 0;
+	transition: 0.8s;
+}
+
+#todoAudits {
+	z-index: 100;
+	filter: blur(5px);
+	opacity: 0;
+	transition: 0.8s;
+}
+
+#todoLiveEdit {
+	z-index: 100;
+	filter: blur(5px);
+	opacity: 0;
+	transition: 0.8s;
+}
+
+#todoCReport {
+	z-index: 100;
+	filter: blur(5px);
+	opacity: 0;
+	transition: 0.8s;
+}
+
+
+#myList {
+	z-index: 500;
+	filter: blur(5px);
+	opacity: 0;
+	transition: 0.8s;
+}
+
+#welcomeScreen {
+	z-index: 600;
+	filter: blur(0px);
+	opacity: 1;
+	transition: 0.8s;
+}
+
+img {
+	position: absolute;
+	top: 350px;
+	left: 230px;
+	z-index: 650;
+	filter: blur(0px);
+	opacity: 0.5;
+	transition: 0.6s;
+	pointer-events: none;
+}
+
+#screenCurtain {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 670;
+	opacity: 1;
+	background: #fff;
+	transition: 0.1s;
+	border-radius: 10px;
+}
+
+#loader {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	opacity: 1;
+}
+
+/* Style the input */
+input {
+    border-width: 2px;
+	border-style: solid;
+	border-color: #9c84a5;
+	border-radius: 10px;
+    width: 58%;
+	padding: 8px;
+	position: absolute;
+    left: 10px;
+	top: 153px;
+    font-size: 16px;
+	background: #e8e8e8;
+	transition: 0.4s;
+	
+}
+
+@-moz-document url-prefix() {
+    input {
+        width: 58%;
+    }
+}
+
+input:hover {
+	border-color: #a8adf7;
+	background: #edf4ff;
+	
+}
+
+input:focus {
+	border-color: #e100ff;
+	background: white;
+	
+}
+
+input:active {
+	border-color: #ff6600;
+}
+
+::placeholder {
+	color: grey;
+}
+
+#addToList {
+position: absolute;
+top: 138px;
+left: 560px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#rmList {
+position: absolute;
+top: 138px;
+left: 670px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#addTicket {
+position: absolute;
+top: 138px;
+left: 780px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+#ulMyList {
+position: relative;
+top: 60px;
+transition: 0.5s;
+opacity: 1;
+transition: 0.5s;
+}
+
+#inputAlert {
+position: fixed;
+top: 430px;
+left: 180px;
+z-index: 700;
+padding: 10px 10px 10px 10px;
+background: #ffaa00;
+border-radius: 10px;
+border-style: solid;
+border-width: 2px;
+border-color: black;
+box-shadow: 1px 1px 3px grey;
+opacity: 0;
+pointer-events: none;
+font-family: 'Bree Serif', serif;
+font-size: 16px;
+overflow: hidden;
+transition: 0.5s;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+#nightModeSelector {
+	position: absolute;
+	top: 25px;
+	right: 200px;
+	float: left;
+	width: 180px;
+	height: 30px;
+	padding: 5px 5px 5px 5px;
+	background: #fff;
+	border-style: dotted;
+	border-color: grey;
+	border-width: 1px;
+	border-radius: 10px;
+	z-index: 2;
+	transition: 0.5s;
+
+}
+
+.nightModeSwitch {
+	font-family: 'Bebas Neue', cursive;
+	padding: 1px 1px 1px 1px;
+}
+
+#nightModeName {
+	position: relative;
+	top: -12px;
+	left: 1px;
+	width: 85px;
+	pointer-events: none;
+	cursor: none;
+	transition: 0.5s;
+}
+
+#nightModeOn {
+	position: relative;
+	left: 120px;
+	top: -50px;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	transition: 0.5s;
+	z-index: 600;
+}
+
+#nightModeDivider {
+	position: relative;
+	left: 135px;
+	top: -78px;
+	pointer-events: none;
+	transition: 0.5s;
+}
+
+#nightModeOff {
+	position: relative;
+	left: 145px;
+	top: -117px;
+	width: 10px;
+	height: 10px;
+	cursor: not-allowed;
+	pointer-events: none;
+	transition: 0.5s;
+	z-index: 600;
+}
+
+
+.stdNote {
+font-family: 'Rubik', sans-serif;
+padding: 10px 10px 10px 10px;
+width: 95%;
+position: absolute;
+left: 10px;
+border-color: orange;
+border-style: solid;
+border-width: 3px;
+border-radius: 10px;
+transition: 0.8s;
+
+}
+
+
+.cRepQuestion {
+font-family: 'Cabin', sans-serif;
+font-size: 24px;
+position: absolute;
+left: 280px;
+}
+
+
+
+.qButton {
+font-family: 'Cabin', sans-serif;
+font-size: 16px;
+padding: 20px 30px 20px 30px;
+width: auto;
+text-align: center;
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 10px;
+transition: 0.4s;
+}
+
+.qButton:hover {
+
+border-color: blue;
+cursor: pointer;
+color: green;
+
+}
+
+
+/* questions go here */
+
+#question1 {
+filter: blur(0px);
+opacity: 1;
+z-index: 700;
+pointer-events: auto;
+transition: 0.8s;
+}
+
+				#chDTs {
+				position: absolute;
+				left: 300px;
+				top: 100px;
+				}
+
+				#chRTs {
+				position: absolute;
+				left: 415px;
+				top: 100px;
+				}
+
+#question2 {
+filter: blur(5px);
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+
+				#chJS {
+				position: absolute;
+				left: 300px;
+				top: 100px;
+				}
+
+				#chHTML {
+				position: absolute;
+				left: 455px;
+				top: 100px;
+				}
+
+#jsJSON {
+filter: blur(5px);
+top: 100px;
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+
+				#nameJSJSON {
+				position: absolute;
+				top: -20px;
+				left: 400px;
+				}
+
+				#chWE {
+				position: absolute;
+				left: 355px;
+				top: 120px;
+				}
+
+				
+				#uListJSJSON {
+				position: absolute;
+				top: 40px;
+				}
+				
+#HTML {
+filter: blur(5px);
+top: 100px;
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+				
+				
+				
+#question3 {
+filter: blur(5px);
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+
+				#chPHIPII {
+				position: absolute;
+				left: 260px;
+				top: 100px;
+				}
+
+				#chNonPHIPII {
+				position: absolute;
+				left: 400px;
+				top: 100px;
+				}
+
+
+
+
+.nameOption {
+	font-family: 'Rubik', sans-serif;
+	font-size: 24px;
+}
+
+#question3a {
+filter: blur(5px);
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+
+#PHIPII {
+filter: blur(5px);
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+
+	#namePHIPII {
+	position: absolute;
+	top: -60px;
+	left: 400px;
+	}
+	
+	.subTitle {
+	font-family: 'Rubik', sans-serif;
+	}
+	
+	#forPHIPII {
+	position: absolute;
+	top: -20px;
+	left: 280px;
+	}
+	
+	#uListPHIPII {
+	position: absolute;
+	top: 20px;
+	}
+	
+	.nNote {
+	font-family: 'Rubik', sans-serif;
+	color: red;
+	}
+	
+	#piiNote {
+	position: absolute;
+	top: 190px;
+	padding: 15px 15px 15px 15px;
+	}
+	
+#nonPHIPII {
+filter: blur(5px);
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+
+#PHIPIIa {
+filter: blur(5px);
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+
+#nonPHIPIIa {
+filter: blur(5px);
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+
+#RTSDT {
+filter: blur(5px);
+opacity: 0;
+z-index: 100;
+pointer-events: none;
+transition: 0.8s;
+}
+
+.cNote {
+	font-family: 'Rubik', sans-serif;
+	
+	}
+	
+#reWind {
+
+font-family: 'PT Sans', sans-serif;
+font-size: 26px;
+position: absolute;
+left: 350px;
+bottom: 100px;
+cursor: pointer;
+
+}
+
+#reWind:hover {
+
+color: blue;
+
+}
+
+
+
+
+
+
+
+
+
+</style>
+<!-- Styling closed -->
+
+<body onload="checkNME()">
+<!-- Here we create the main container for all the checklists out there. All the lists will be contained within this container -->
+	<div id="lsContainer">
+		
+		<p id="toolName">TransCheck - quick to-do lists</p>
+		<p id="toolVersion">Raccoon Engine v1.5<br/>last update: 03/05/2021</p>
+		
+<!-- We put Night Mode enablers here -->
+		<div id="nightModeSelector">
+			<p id="nightModeName" class="nightModeSwitch">Night Mode &#x1F319;</p>
+			<p onclick="nightModeOn()" id="nightModeOn" class="nightModeSwitch">ON</p>
+			<p id="nightModeDivider" class="nightModeSwitch">|</p>
+			<p onclick="nightModeOff()" id="nightModeOff" class="nightModeSwitch">OFF</p>
+		</div>
+<!-- Night Mode JS -->
+		<script>
+		
+		function checkNME() {
+			var tNightMode = localStorage.getItem("nme");
+			if (tNightMode === "ON") {
+				nightModeOn();
+				}
+			
+			}
+			
+			
+			function nightModeOn() {
+			
+			localStorage.setItem("nme", "ON");
+			
+			
+			var ON = document.getElementById("nightModeOff");
+			ON.style.pointerEvents = "auto";
+			ON.style.cursor = "pointer";
+			
+			
+			
+			var OFF = document.getElementById("nightModeOn");
+			OFF.style.pointerEvents = "none";
+			OFF.style.cursor = "none";
+			
+			var bodyNight = document.body;
+			bodyNight.style.background = "#25303c";
+			
+			var mainContainer = document.getElementById("lsContainer");
+			mainContainer.style.background = "#2f4357";
+			mainContainer.style.boxShadow = "1px 1px 15px 15px #252e36";
+			
+			var toolName = document.getElementById("toolName");
+			toolName.style.background = "#2f4357";
+			toolName.style.color = "#c1d9f9";
+			
+			var nightModeSelector = document.getElementById("nightModeSelector");
+			nightModeSelector.style.background = "#2f4357";
+			
+			var nightModeSwitch = document.getElementsByClassName("nightModeSwitch");
+			var i;
+					for (i = 0; i < nightModeSwitch.length; i++) {
+					nightModeSwitch[i].style.color = "#c8dbf7";
+					}
+			
+			var lsSelector = document.getElementById("lsSelector");
+			lsSelector.style.background = "#25303c";
+			lsSelector.style.boxShadow = "inset 0px 0px 5px 2px #25303c";
+			
+			var toolVersion = document.getElementById("toolVersion");
+			toolVersion.style.background = "#2f4357";
+			toolVersion.style.color = "#c1d9f9";
+			
+			var selButton = document.getElementsByClassName("lsSelButton");
+			var i;
+					for (i = 0; i < selButton.length; i++) {
+					selButton[i].style.color = "#c8dbf7";
+					selButton[i].style.background = "#193e63";
+					selButton[i].style.boxShadow = "1px 1px 3px #252e36";
+					}
+					
+			var todoList = document.getElementsByClassName("todoList");
+			var i;
+					for (i = 0; i < todoList.length; i++) {
+					todoList[i].style.background = "#213142";
+					todoList[i].style.borderColor = "#2f4357";
+					}
+					
+			var loader = document.getElementById("screenCurtain");
+			loader.style.background = "#2f4357";
+					
+			var procedureName = document.getElementsByClassName("procedureName");
+			var i;
+					for (i = 0; i < procedureName.length; i++) {
+					procedureName[i].style.color = "#a9cff7";
+					
+					}
+			
+			var listName = document.getElementsByClassName("listName");
+			var i;
+					for (i = 0; i < listName.length; i++) {
+					listName[i].style.background = "#1d252d";
+					listName[i].style.color = "#a9cff7";
+					
+					
+					}
+					
+					
+			var stdNote = document.getElementsByClassName("stdNote");
+			var i;
+					for (i = 0; i < stdNote.length; i++) {
+					
+					stdNote[i].style.color = "#a9cff7";
+					
+					
+					}
+					
+			var ulli = document.querySelectorAll("li:nth-child(odd)");
+			var i;
+					for (i = 0; i < ulli.length; i++) {
+					ulli[i].style.background = "#532666";
+					ulli[i].style.color = "#a9cff7";
+					
+					}
+					
+			var ulli = document.querySelectorAll("li:nth-child(even)");
+			var i;
+					for (i = 0; i < ulli.length; i++) {
+					ulli[i].style.background = "#461a59";
+					ulli[i].style.color = "#a9cff7";
+					
+					}
+					
+		
+	}
+			
+			
+			
+			
+			function nightModeOff() {
+			
+			localStorage.setItem("nme", "OFF");
+			
+			var OFF = document.getElementById("nightModeOn");
+			OFF.style.pointerEvents = "auto";
+			OFF.style.cursor = "pointer";
+			
+			
+			
+			var ON = document.getElementById("nightModeOff");
+			ON.style.pointerEvents = "none";
+			ON.style.cursor = "none";
+			
+			var bodyNight = document.body;
+			bodyNight.style.background = "revert";
+			
+			var mainContainer = document.getElementById("lsContainer");
+			mainContainer.style.background = "revert";
+			mainContainer.style.boxShadow = "1px 1px 15px grey";
+			
+			var toolName = document.getElementById("toolName");
+			toolName.style.background = "revert";
+			toolName.style.color = "revert";	
+			
+			var nightModeSelector = document.getElementById("nightModeSelector");
+			nightModeSelector.style.background = "revert";
+			
+			var nightModeSwitch = document.getElementsByClassName("nightModeSwitch");
+			var i;
+					for (i = 0; i < nightModeSwitch.length; i++) {
+					nightModeSwitch[i].style.color = "revert";
+					}
+			
+			var lsSelector = document.getElementById("lsSelector");
+			lsSelector.style.background = "revert";
+			lsSelector.style.boxShadow = "inset 0px 0px 5px 2px #d9d9d9";
+			
+			
+			var toolVersion = document.getElementById("toolVersion");
+			toolVersion.style.background = "revert";
+			toolVersion.style.color = "revert";
+			
+			
+			var selButton = document.getElementsByClassName("lsSelButton");
+			var i;
+					for (i = 0; i < selButton.length; i++) {
+					selButton[i].style.color = "revert";
+					selButton[i].style.background = "#85f3ff";
+					}
+					
+			var todoList = document.getElementsByClassName("todoList");
+			var i;
+					for (i = 0; i < todoList.length; i++) {
+					todoList[i].style.background = "revert";
+					todoList[i].style.borderColor = "grey";
+					}
+					
+			var procedureName = document.getElementsByClassName("procedureName");
+			var i;
+					for (i = 0; i < procedureName.length; i++) {
+					procedureName[i].style.color = "revert";
+					
+					}
+					
+			var listName = document.getElementsByClassName("listName");
+			var i;
+					for (i = 0; i < listName.length; i++) {
+					listName[i].style.background = "#e4ede4";
+					listName[i].style.color = "revert";
+					
+					}
+					
+			
+
+			var stdNote = document.getElementsByClassName("stdNote");
+			var i;
+					for (i = 0; i < stdNote.length; i++) {
+					
+					stdNote[i].style.color = "revert";
+					
+					
+					}			
+			
+			
+			
+			
+					
+			var ulli = document.querySelectorAll("li:nth-child(odd)");
+			var i;
+					for (i = 0; i < ulli.length; i++) {
+					ulli[i].style.background = "#fabd82";
+					ulli[i].style.color = "revert";
+					
+					}
+					
+			var ulli = document.querySelectorAll("li:nth-child(even)");
+			var i;
+					for (i = 0; i < ulli.length; i++) {
+					ulli[i].style.background = "#ffe9d4";
+					ulli[i].style.color = "revert";
+										
+					}
+					
+			
+			
+			}
+			
+		
+		</script>
+		
+<!-- Here we put selectors background -->
+		<div id="lsSelector">
+			<p onclick="switchPTO()" class="lsSelButton" id="lsPTO">PTO Checklist</p>
+			<p onclick="switchCancel()" class="lsSelButton" id="lsCancellation">Pr. Cancellation</p>
+			<p onclick="switchReassign()" class="lsSelButton" id="lsAccReassign">Acc. Reassign.</p>
+			<p onclick="switchWEList()" class="lsSelButton" id="lsWEList">WE groups</p>
+			<p onclick="switchAudits()" class="lsSelButton" id="lsAudilist">Audits</p>
+			<p onclick="switchLiveEdit()" class="lsSelButton" id="lsLiveEdit">LiveEdit</p>
+			<p onclick="switchCReport()" class="lsSelButton" id="lsCReport">Content Opt.</p>
+			<p onclick="switchMyList()" class="lsSelButton" id="lsMyList">My List</p>
+		</div>
+<!-- Here we put all the tiles with the to do lists. Those are put initially via style css, but are controlled later on via JS (vanilla mostly) -->
+		<div class="todoList" id="welcomeScreen">
+		<p class="procedureName" id="welcomeHeader">Welcome!</p>
+		<p class="listName" id="welcomeBody">Hello and welcome to TransCheck. A little tool to help keep all important procedures in one place in a convenient step-by-step form.<br/><br/>
+											You can mark any step as done by simply clicking on it. Test the one below and please select an option above to switch to the desired list.</p>
+		<ul class="taskList" id="ulTestList">
+			<li>Click me to mark me as "done"</li>
+		</ul>
+		</div>
+		<img alt="" id="Raccoon" src="data:image/png;base64,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">
+		<div class="todoList" id="todoPTO">
+		<p class="procedureName" id="lsnmPTO">PTO/OOO procedure</p>
+		<p class="listName" id="lsRequestPTO">PTO/OOO request steps</p>
+		<ul class="taskList" id="uListPTORequested">
+			<li>Review current PTO calendar to see if anyone else has planned to be out those days<br/>
+			<a href="https://motionpointo365.sharepoint.com/sites/ServiceDelivery/Lists/PTO%20Calendar/TE.aspx" target="_blank">Here for TEs&nbsp;&nbsp;&nbsp;>>></a> and <a href="https://motionpointo365.sharepoint.com/sites/ServiceDelivery/Lists/PTO%20Calendar/ICM.aspx" target="_blank">Here for COS&nbsp;&nbsp;&nbsp;>>></a></li>
+			<li>Notify the team on your PTO/OOO plans via Teams</li>
+			<li>Coordinate the accounts with back ups in case your PTO overlaps with other members</li>
+			<li>Add your PTO to the Sharepoint Calendar<br/>
+			<a href="https://motionpointo365.sharepoint.com/sites/ServiceDelivery/Lists/PTO%20Calendar/TE.aspx" target="_blank">Here for TEs&nbsp;&nbsp;&nbsp;>>></a> and <a href="https://motionpointo365.sharepoint.com/sites/ServiceDelivery/Lists/PTO%20Calendar/ICM.aspx" target="_blank">Here for COS&nbsp;&nbsp;&nbsp;>>></a></li>
+			<li>When confirmed, create a request in ADP system</li>
+		</ul>
+		
+		<p class="listName" id="lsRequestPTO4HRLESS" style="background:#c3cf67">Please note that if you're going to be out for less than 4 hours, you don't need to do ADP request. Let Alejandro, Veronica, and the team know when you're out and for how many hours.</p>
+
+		<p class="listName" id="lsApprovedPTO">PTO/OOO set up, when the request has been approved</p>
+		<ul class="taskList" id="uListPTOApproved">
+			<li>Update OneNote information on each account as necessary. Make sure to include all current tickets numbers for reference (spikes, optimizations, PDRs, etc.)</li>
+			<li>Make sure to set up back-up TEs in TPM/CC. Mind accounts recently reassigned from COS. Set up back-ups for accounts managed by MLG as well</li>
+			<li>Set up OOO status in TPM/CC<br/>
+			<a href="https://control.motionpoint.com/tpm/#!/out-of-office" target="_blank">Here&nbsp;&nbsp;&nbsp;>>></a></li>
+			<li>Set up ticket reassigner. Keep in mind that it requires NetExtender working<br/>
+			<a href="https://mpreports.com/" target="_blank">Here&nbsp;&nbsp;&nbsp;>>></a></li>
+			<li>Set up "Do Not Disturb" status in TM2</li>
+			<li>Set up TM2 announcement<br/>
+			<a href="https://motionportal.motionpoint.com/admin.aspx?action=manage_announcements" target="_blank">Here&nbsp;&nbsp;&nbsp;>>></a></li>
+			<li>Set up automatic response in OutLook for the period of your PTO</li>
+			<li>Set up OOO notification in MS Teams (Status settings)</li>
+		</ul>
+		</div>
+		
+		
+		
+		<div class="todoList" id="todoPrjCancel">
+		<p class="procedureName" id="lsnmPrjCancel">Project/Account Cancellation</p>
+		<p class="listName" id="lsPrjCancel">This list describes the steps that you should follow when receiving official cancellation ticket/notification</p>
+		<ul class="taskList" id="uListPrjCancel">
+			<li>Clean page queues including new images and new segments</li>
+			<li>Delete existing scheduled jobs</li>
+			<li>Delete remaining segments and files in New</li>
+			<li>Turn off all Auto-Jobs (Auto-Parser, Auto-Assignment, etc.)</li>
+			<li>Unassign the account/project in TPM and TM2</li>
+			<li>Add a note to Project Information tab in TM2 with the info referencing the ticket</li>
+			<li>Send a notification to the vendors and Vendor TAMs (MLG) with the notification</li>
+			<li>Download and archive TMX files with the translations to V:\ drive</li>
+			<li>Set the account/project as inactive in Project Configuration in TPM</li>
+			<li>Set the default contractor to None</li>
+		</ul>
+		</div>
+		
+		
+		
+		<div class="todoList" id="todoAccReassigned">
+		<p class="procedureName" id="lsnmAccReassigned">Project/Account Reassignment</p>
+		<p class="listName" id="lsAccReassigned">This list describes the steps that you should follow when reassigning a project/account</p>
+		<ul class="taskList" id="uListAccReassigned">
+			<li>Make sure that the account/project is assigned in TEs name in TPM</li>
+			<li>Assign the account/project in TEs name in TM2 project information</li>
+			<li>Check scheduled jobs</li>
+			<li>Check auto-jobs</li>
+			<li>Update One Note info and copy ICM/COS info into your section or create a new one if there's none yet</li>
+			<li>Check if there are any chats/groups in Teams for the project to add the TE there</li>
+		</ul>
+		<p class="listName" id="lsAssToMLG">When reassigning an account to MLG, please follow these steps</p>
+		<ul class="taskList" id="uListAccReassignedToMLG">
+			<li>Contact Alejandro via a ticket to let him know the account is being reassigned to MLG</li>
+			<li>Make sure One Note is updated and put it's screenshot in the ticket</li>
+			<li>Attach to the ticket: Glossary, Style Guide, Appendix A</li>
+			<li>Send the ticket to Contractor Manager (MLG) and notify of the transition</li>
+			<li>Once acknowledged by MLG, please assign the account in TPM to MLG</li>
+			<li>Send the ticket to Alejandro for reference and tracker update</li>
+		</ul>
+		</div>
+		
+		
+		
+		
+		<div class="todoList" id="todoWEList">
+		<p class="procedureName" id="lsnmWEList">Post-delivery WE distribution queues</p>
+		<p class="listName" id="procWEList">Customers no longer have an assigned post-delivery (maintenance) Web Engineer. Tickets that are not in process have been moved into one of four communal distribution queues: Misalignment, Translation, Functionality, Other.</p>
+		
+		<p class="listName" id="WEMisal">WE - Misalignment</p>
+		<ul class="taskList" id="uListWE1">
+			<li>Visual Element on a page is misaligned compared to origin</li>
+		</ul>
+		
+		<p class="listName" id="WETrans">WE - Translation</p>
+		<ul class="taskList" id="uListWE2">
+			<li>Appendix A (Rule A/B/C/D scope of work revisions, MotionPortal URL entries)</li>
+			<li>Text and image activations</li>
+			<li>Content that has been translated but not showing translated on the page</li>
+			<li>Content that is needs WE assistance to enter the translation queue</li>
+			<li>Content optimizations (DTs, merges, breaks, blocks)</li>
+			<li>WebCATT content issues (encoding, code in queue, unwanted pages)</li>
+			<li>Broken images in translation queue</li>
+			<li>WebCATT project/page queues</li>
+			<li>Machine translation</li>
+			
+		</ul>
+		
+		<p class="listName" id="WEFunc">WE - Functionality</p>
+		<ul class="taskList" id="uListWE3">
+			<li>Unexpected page behavior</li>
+			<li>On Site Search (OSS)</li>
+			<li>TranSend</li>
+			<li>Easylink</li>
+			<li>Speedbump/splash page</li>
+			<li>Global Site Map (GSM)</li>
+            <li>Content customization</li>
+		</ul>
+		
+		<p class="listName" id="WEOther">WE - Other</p>
+		<ul class="taskList" id="uListWE4">
+			<li>Site outage or uptime and availability</li>
+			<li>Customer call requests, root cause analysis</li>
+			<li>Platform or technology setup questions, quotes, whitelisting</li>
+			<li>WebCATT inaccessible/TServer properties not found</li>
+		</ul>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		<div class="todoList" id="todoAudits">
+		<p class="procedureName" id="lsnmAudits">Audits Process</p>
+		<p class="listName" id="lsAudits">This list describes the steps that you should follow when performing site audits per received tickets</p>
+		<p class="listName" id="lsAudits1">Select Pages</p>
+		<ul class="taskList" id="uListAudits1">
+			<li>Create a ticket and request SDM to provide Top 50 URLs by recent traffic extracted from Logaholic</li>
+			<li>In case no analytics available, please build the list of URLs to be reviewed by selecting the most visible pages (Homepage, Landing Pages, Promo Pages, pages with recent translation activity</li>
+			<li>From the list, provided by SDM, select top 20-30 URLs and validate that they are working. Skip those that don't work moving down to the next one.</li>
+			<li>Make sure your shortened list contains HP/LP/Promos as well</li>
+			<li>Check the URLs against Appendix A to make sure they are within Scope</li>
+		</ul>
+		
+		<p class="listName" id="lsAudits2">Submit Audit Request by sending the ticket to MLG with the following</p>
+		<ul class="taskList" id="uListAudits2">
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;1. List of URLs to review</li>
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;2. General word count on the URLs</li>
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;3. Most updated Glossary and Style Guide which can be found in TPM for that account</li>
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;4. Expected process to follow (include Audit Process for Vendors files)</li>
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;5. Translation Review Template to be filled out</li>
+		</ul>
+		
+		<p class="listName" id="lsAudits3">Expect MLG to return the ticket to you with the following</p>
+		<ul class="taskList" id="uListAudits3">
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;1. All reviewed URLs are listed out</li>
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;2. All findings are listed out</li>
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;3. All errors, discrepancies, faults, etc. are cataloged per MP Translation Template</li>
+
+		</ul>
+		
+		
+		<p class="listName" id="lsAudits4">Scorecard information</p>
+		<ul class="taskList" id="uListAudits4">
+			<li>Load the reviewed URLs into the queue</li>
+			<li>Run update job to determine the word count of all the pages combined</li>
+			<li>Fill out the Scorecard information (customer name, word count, page count, etc)</li>
+			<li>For any technhical instances please direct child tickets to WE queues accordingly before proceeding sending the ticket to PTS to review</li>
+			
+
+		</ul>
+		
+		
+		<p class="listName" id="lsAudits5">Audit Report Processing</p>
+		<ul class="taskList" id="uListAudits5">
+			<li>Send the filled out report to PTS team (MN QA Issues) to review</li>
+			<li>Once the ticket is back to you, make sure that the template has all listed issues reviewed and marked accordingly before the final scores are calculated</li>
+			<li>PTS is to present and Incident Report to MP in case of a failing score, otherwise they provide their assessment of the audit results</li>
+			
+		</ul>
+		
+		
+		<p class="listName" id="lsAudits6">Results and further steps</p>
+		<ul class="taskList" id="uListAudits6">
+			<li>PTS provides their assessment of the audit results</li>
+			<li>Generate a report by site regardless of the score, providing visibility into the overall and linguistic scores summarizing problems found, corrective measures taken or required, brief background on the customer's feedbacks</li>
+			<li>Share the report with CSM, SDM and Head of Translation Department</li>
+			
+		</ul>
+		
+		
+		</div>
+		
+		
+		
+		
+		
+		<div class="todoList" id="todoLiveEdit">
+		<p class="procedureName" id="lsnmLiveEdit">LiveEdit Related Stuff</p>
+		<p class="listName" id="lsLivEditHead">This is a collection of LiveEdit tool related things that is to be expanded later in the future</p>
+		<p class="stdNote" id="LENote"><a href="https://datastudio.google.com/u/0/reporting/1CXCPAQizd5g1jSRahsI7B7u0dS7YH8SK/page/Gg3?s=rU9IJPqKyN8" target="_blank">LiveEdit Analysis Report</a><br/><br/>
+										Please use these reports to monitor overall edits activity for your customers and ensure that any unusually high activity from the customer gets appropriate level of our attention.</p><br/>
+										
+		</div>
+		
+		
+		
+		
+		<div class="todoList" id="todoCReport">
+		<p class="procedureName" id="lsnmCReport">Content Optimization Report Quiz</p>
+		<p class="listName" id="lsCReportHead">This is how you report the content to TE/WE teams. Please select the options below...</p>
+		<br/>
+		<br/>
+			<div id="question1">
+				<p class="cRepQuestion">What kind of optimization is it?</p>
+				<p class="qButton" onclick="choseDTs()" id="chDTs">DTs</p>
+				<p class="qButton" onclick="choseRTs()" id="chRTs">RTs/DD</p>
+			</div>
+			
+			<script>
+				function choseDTs() {
+				
+				var reveal0 = document.getElementById("question1");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("question2");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+				
+				function choseRTs() {
+				
+				var reveal0 = document.getElementById("question1");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("RTSDT");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+			</script>
+		
+			<div id="question2">
+				<p class="cRepQuestion">Where is the content coming from?</p>
+				<p class="qButton" onclick="choseJS()" id="chJS">JS/JSON</p>
+				<p class="qButton" onclick="choseHTML()" id="chHTML">HTML</p>
+			</div>
+			
+			
+			
+			<script>
+				function choseJS() {
+				
+				var reveal0 = document.getElementById("question2");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("jsJSON");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+				
+				
+				function choseHTML() {
+				
+				var reveal0 = document.getElementById("question2");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("HTML");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+			</script>
+			
+			
+			
+			<div id="jsJSON">
+				<p class="nameOption" id="nameJSJSON">JS/JSON</p>
+				<ul id="uListJSJSON">
+					<li>check the URL ending with .js or .json.txt</li>
+					<li>check the preview which contains code-like content</li>
+				</ul>
+				<p class="qButton" onclick="choseWE()" id="chWE">Report it to WE</p>
+			</div>
+			
+			<div id="HTML">
+				<p class="nameOption" id="nameJSJSON">HTML</p>
+				<ul id="uListJSJSON">
+					<li>check the URL ending with .html or .htm</li>
+					<li>check the preview which contains actual preview</li>
+				</ul>
+				<p class="qButton" onclick="choseTE()" id="chWE">Report it to TE</p>
+			</div>
+			
+			
+			<script>
+				function choseWE() {
+				
+				var reveal0 = document.getElementById("jsJSON");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("question3");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+				
+				
+				function choseTE() {
+				
+				var reveal0 = document.getElementById("HTML");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("question3a");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+			</script>
+			
+			
+			
+			
+			
+			<div id="question3">
+				<p class="cRepQuestion">What type of content is this?</p>
+				<p class="qButton" onclick="chosePHIPII()" id="chPHIPII">PHI/PII</p>
+				<p class="qButton" onclick="choseNonPHIPII()" id="chNonPHIPII">NON-PHI/PII</p>
+			</div>
+			
+			<div id="question3a">
+				<p class="cRepQuestion">What type of content is this?</p>
+				<p class="qButton" onclick="chosePHIPIIa()" id="chPHIPII">PHI/PII</p>
+				<p class="qButton" onclick="choseNonPHIPIIa()" id="chNonPHIPII">NON-PHI/PII</p>
+			</div>
+			
+			
+			<script>
+				function chosePHIPII() {
+				
+				var reveal0 = document.getElementById("question3");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("PHIPII");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+				
+				function choseNonPHIPII() {
+				
+				var reveal0 = document.getElementById("question3");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("nonPHIPII");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+				
+				
+				
+				function chosePHIPIIa() {
+				
+				var reveal0 = document.getElementById("question3a");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("PHIPIIa");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+				
+				function choseNonPHIPIIa() {
+				
+				var reveal0 = document.getElementById("question3a");
+				reveal0.style.opacity = "0";
+				reveal0.style.zIndex = "100";
+				reveal0.style.filter = "blur(5px)";
+				reveal0.style.pointerEvents = "none";
+				
+				var obtain1 = document.getElementById("nonPHIPIIa");
+				obtain1.style.opacity = "1";
+				obtain1.style.zIndex = "600";
+				obtain1.style.filter = "blur(0px)";
+				obtain1.style.pointerEvents = "auto";
+				
+				};
+			</script>
+			
+			
+			
+			
+			
+			<div id="PHIPII">
+				<p class="nameOption" id="namePHIPII">PHI/PII</p>
+				<p class="subTitle" id="forPHIPII">Please provide the following when reporting:</p>
+				<ul id="uListPHIPII">
+					<li>PID (Page ID)</li>
+					<li>SID (Segment ID)</li>
+					<li>URL pattern</li>
+					<li>Reason why it is sent to WE team (JS/JSON code in queue)</li>
+				</ul>
+				<p class="nNote" id="piiNote">Note: Do <strong>NOT</strong> use screenshots or segments depicting the personal information when sending the ticket.<br/>
+				Please use the wording "Doesn't qualify for suppression" when reporting PII instead of saying "PII".</p>
+				
+			</div>
+			
+			
+			<div id="nonPHIPII">
+				<p class="nameOption" id="namePHIPII">NON PHI/PII</p>
+				<p class="subTitle" id="forPHIPII">Please provide the following when reporting:</p>
+				<ul id="uListPHIPII">
+					<li>PID (Page ID)</li>
+					<li>SID (Segment ID)</li>
+					<li>URL pattern</li>
+					<li>Screenshot of the content</li>
+					<li>Reason why it is sent to WE team (JS/JSON code in queue)</li>
+				</ul>
+				
+				
+			</div>
+			
+			
+			
+			<div id="PHIPIIa">
+				<p class="nameOption" id="namePHIPII">PHI/PII</p>
+				<p class="subTitle" id="forPHIPII">Please provide the following when reporting:</p>
+				<ul id="uListPHIPII">
+					<li>PID (Page ID)</li>
+					<li>SID (Segment ID)</li>
+					<li>URL pattern</li>
+					<li>Reason why it is sent to TE team (JS/JSON code in queue)</li>
+				</ul>
+				<p class="nNote" id="piiNote">Note: Do <strong>NOT</strong> use screenshots or segments depicting the personal information when sending the ticket.<br/>
+				Please use the wording "Doesn't qualify for suppression" when reporting PII instead of saying "PII".</p>
+				
+			</div>
+			
+			
+			<div id="nonPHIPIIa">
+				<p class="nameOption" id="namePHIPII">NON PHI/PII</p>
+				<p class="subTitle" id="forPHIPII">Please provide the following when reporting:</p>
+				<ul id="uListPHIPII">
+					<li>PID (Page ID)</li>
+					<li>SID (Segment ID)</li>
+					<li>URL pattern</li>
+					<li>Screenshot of the content</li>
+					<li>Reason why it is sent to TE team (JS/JSON code in queue)</li>
+				</ul>
+				
+				
+			</div>
+			
+			
+			<div id="RTSDT">
+				<p class="nameOption" id="namePHIPII">RTs/DT</p>
+				<p class="subTitle" id="forPHIPII">Please report to Sr. TE and provide the following:</p>
+				<ul id="uListPHIPII">
+					<li>PID (Page ID)</li>
+					<li>SID (Segment ID)</li>
+					<li>Origin Segment</li>
+					<li>Translation Sample</li>
+				</ul>
+				<p class="cNote" id="piiNote">Note: Do <strong style="color:red;">NOT</strong> use screenshots or segments depicting the personal information when sending the ticket.<br/>
+				Replace any PI with placeholders.<br/>
+				For dynamic content mark non-translatable content in <span style="color:red;">RED</span> and translatable content in <span style="color:blue;">BLUE</span> (leave the static content in BLACK).</p>
+				
+			</div>
+			
+			
+			<p class="btn" id="reWind" onclick="reWind()">Start over ---></p>
+			
+			<script>
+			function reWind() {
+			
+			var reveal0 = document.getElementById("question1");
+				reveal0.style.opacity = "1";
+				reveal0.style.zIndex = "600";
+				reveal0.style.filter = "blur(0px)";
+				reveal0.style.pointerEvents = "auto";
+			
+			var obtain1 = document.getElementById("question2");
+				obtain1.style.opacity = "0";
+				obtain1.style.zIndex = "100";
+				obtain1.style.filter = "blur(5px)";
+				obtain1.style.pointerEvents = "none";
+
+			var obtain2 = document.getElementById("RTSDT");
+							obtain2.style.opacity = "0";
+							obtain2.style.zIndex = "100";
+							obtain2.style.filter = "blur(5px)";
+							obtain2.style.pointerEvents = "none";
+
+			var obtain3 = document.getElementById("jsJSON");
+							obtain3.style.opacity = "0";
+							obtain3.style.zIndex = "100";
+							obtain3.style.filter = "blur(5px)";
+							obtain3.style.pointerEvents = "none";
+
+			var obtain4 = document.getElementById("HTML");
+							obtain4.style.opacity = "0";
+							obtain4.style.zIndex = "100";
+							obtain4.style.filter = "blur(5px)";
+							obtain4.style.pointerEvents = "none";
+
+			var obtain5 = document.getElementById("question3");
+							obtain5.style.opacity = "0";
+							obtain5.style.zIndex = "100";
+							obtain5.style.filter = "blur(5px)";
+							obtain5.style.pointerEvents = "none";
+
+			var obtain6 = document.getElementById("question3a");
+							obtain6.style.opacity = "0";
+							obtain6.style.zIndex = "100";
+							obtain6.style.filter = "blur(5px)";
+							obtain6.style.pointerEvents = "none";
+
+			var obtain7 = document.getElementById("PHIPII");
+							obtain7.style.opacity = "0";
+							obtain7.style.zIndex = "100";
+							obtain7.style.filter = "blur(5px)";
+							obtain7.style.pointerEvents = "none";
+
+			var obtain8 = document.getElementById("nonPHIPII");
+							obtain8.style.opacity = "0";
+							obtain8.style.zIndex = "100";
+							obtain8.style.filter = "blur(5px)";
+							obtain8.style.pointerEvents = "none";
+
+			var obtain9 = document.getElementById("PHIPIIa");
+							obtain9.style.opacity = "0";
+							obtain9.style.zIndex = "100";
+							obtain9.style.filter = "blur(5px)";
+							obtain9.style.pointerEvents = "none";
+
+			var obtain0 = document.getElementById("nonPHIPIIa");
+							obtain0.style.opacity = "0";
+							obtain0.style.zIndex = "100";
+							obtain0.style.filter = "blur(5px)";
+							obtain0.style.pointerEvents = "none";
+			
+			
+			};
+			</script>
+			
+			
+		
+		
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div class="todoList" id="myList">
+		<p class="procedureName" id="lsnmHidden">My List</p>
+		<p class="listName" id="lsHidden">Feel free to add your own notes. Those are saved automatically in your browser once you add those, and will be available here even if you close this tab.<br/>
+		However, the list will be gone if you clear cache of your browser...</p>
+		<input type="text" id="lsMyItem">
+		<p id="inputAlert">You did't put anything here!&nbsp;&nbsp;<i class="arrow up"></i></p>
+		<p id="addToList" class="lsSelButton" onclick="appendList()">Add to My List</p>
+		<p id="rmList" class="lsSelButton" onclick="removeList()">Clear My List</p>
+		<p id="addTicket" class="lsSelButton" onclick="newIssue()">Create a Ticket</p>
+		<ul class="taskList" id="ulMyList">
+			
+		</ul>
+<!-- Adding a function to create a list from the user input. We also enable the "Enter" key here. -->
+		<script>
+		
+		document.getElementById("lsMyItem")
+		.addEventListener("keyup", function(e) {
+			if (e.keyCode === 13) {
+				document.getElementById("addToList").click();
+			}
+		});
+		
+	
+		function appendList() {
+			var myList = [];
+			myList = localStorage.getItem('tamList') ? JSON.parse(localStorage.getItem('tamList')) : [];
+			localStorage.setItem('tamList', JSON.stringify(myList));
+			var ul = document.getElementById('ulMyList');
+			var li = document.createElement('li');
+			var item = document.getElementById('lsMyItem');
+			
+			
+			
+			if (item.value === '') {
+				var alert = document.getElementById("inputAlert");
+				alert.style.opacity = "1";
+				alert.style.top = "160px";
+				
+				var inputColor = document.getElementById("lsMyItem");
+				inputColor.style.background = "#ff9999";
+				
+				setTimeout(function() {
+					var alert = document.getElementById("inputAlert");
+					alert.style.opacity = "0";
+					alert.style.top = "180px";
+					
+					var inputColor = document.getElementById("lsMyItem");
+					inputColor.style.background = "revert";
+				;},2500);
+				
+				return false}
+				else {
+					li.appendChild(document.createTextNode(item.value));
+					ul.appendChild(li);
+					myList.push(item.value);
+					localStorage.setItem('tamList', JSON.stringify(myList));
+					item.value = '';
+			}
+			
+			
+		}
+		
+		</script>
+		
+
+<!-- Adding a function to remove the whole list from the My List section -->
+		<script>
+		function removeList() {
+		
+			setTimeout(function() {
+			var mlST = document.getElementById("ulMyList");
+			mlST.style.opacity = "0";
+			;},100);
+			
+			setTimeout(function() {
+			var rmLS = document.getElementById('ulMyList');
+			rmLS.innerHTML = '';
+			localStorage.removeItem("tamList");
+			rmLS.style.opacity = "1";
+			;},1500);
+		
+		}
+		</script>
+		
+<!-- Adding a function to create a new ticket -->
+
+		<script>
+		function newIssue(){
+			window.open('https://motionportal.motionpoint.com/issue_add.aspx?c_id=0&p_id=0&l_id=0&ref_value=ctl00_Body_cntrl_btnRefreshMyIssues', '_blank', 'width=1024,height=750');
+		}
+		</script>
+		
+		
+		</div>
+<!-- Closing the "lsContainer" here -->
+<div id="screenCurtain">
+	<div id="loader"><img alt="" src="data:image/png;base64,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">
+	</div>
+</div>
+
+<script>
+// We're making the lists checkable
+var list = document.querySelector("#uListPTORequested");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListPTOApproved");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListPrjCancel");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListAccReassigned");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListAccReassignedToMLG");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#ulTestList");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListWE1");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListWE2");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListWE3");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListWE4");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListAudits1");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListAudits2");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListAudits3");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListAudits4");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListAudits5");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#uListAudits6");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+var list = document.querySelector("#ulMyList");
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+</script>
+
+<script>
+// Switching between tiles
+
+// PTO switch
+function switchPTO() {
+
+var listPTO = document.getElementById("todoPTO");
+	todoPTO.style.filter = "blur(0px)";
+	todoPTO.style.zIndex = "500";
+	todoPTO.style.opacity = "1";
+
+var listCancel = document.getElementById("todoPrjCancel");
+	todoPrjCancel.style.filter = "blur(5px)";
+	todoPrjCancel.style.zIndex = "200";
+	todoPrjCancel.style.opacity = "0";
+	
+var listReassign = document.getElementById("todoAccReassigned");
+	todoAccReassigned.style.filter = "blur(5px)";
+	todoAccReassigned.style.zIndex = "200";
+	todoAccReassigned.style.opacity = "0";
+	
+var listHidden = document.getElementById("myList");
+	myList.style.filter = "blur(5px)";
+	myList.style.zIndex = "200";
+	myList.style.opacity = "0";
+	
+var welcomer = document.getElementById("welcomeScreen");
+	welcomeScreen.style.filter = "blur(5px)";
+	welcomeScreen.style.zIndex = "190";
+	welcomeScreen.style.opacity = "0";
+	
+var WEList = document.getElementById("todoWEList");
+	WEList.style.filter = "blur(5px)";
+	WEList.style.zIndex = "190";
+	WEList.style.opacity = "0";
+	
+var listAudits = document.getElementById("todoAudits");
+	listAudits.style.filter = "blur(5px)";
+	listAudits.style.zIndex = "200";
+	listAudits.style.opacity = "0";
+	
+var listLE = document.getElementById("todoLiveEdit");
+	listLE.style.filter = "blur(5px)";
+	listLE.style.zIndex = "100";
+	listLE.style.opacity = "0";
+	
+var listCREP = document.getElementById("todoCReport");
+	listCREP.style.filter = "blur(5px)";
+	listCREP.style.zIndex = "100";
+	listCREP.style.opacity = "0";
+	
+var raccoon = document.getElementById("Raccoon");
+	Raccoon.style.filter = "blur(5px)";
+	Raccoon.style.zIndex = "190";
+	Raccoon.style.opacity = "0";
+};
+
+// Project Cancellation switch
+function switchCancel() {
+
+var listPTO = document.getElementById("todoPTO");
+	todoPTO.style.filter = "blur(5px)";
+	todoPTO.style.zIndex = "200";
+	todoPTO.style.opacity = "0";
+
+var listCancel = document.getElementById("todoPrjCancel");
+	todoPrjCancel.style.filter = "blur(0px)";
+	todoPrjCancel.style.zIndex = "500";
+	todoPrjCancel.style.opacity = "1";
+	
+var listReassign = document.getElementById("todoAccReassigned");
+	todoAccReassigned.style.filter = "blur(5px)";
+	todoAccReassigned.style.zIndex = "200";
+	todoAccReassigned.style.opacity = "0";
+	
+var listHidden = document.getElementById("myList");
+	myList.style.filter = "blur(5px)";
+	myList.style.zIndex = "200";
+	myList.style.opacity = "0";
+	
+var welcomer = document.getElementById("welcomeScreen");
+	welcomeScreen.style.filter = "blur(5px)";
+	welcomeScreen.style.zIndex = "190";
+	welcomeScreen.style.opacity = "0";
+	
+	var WEList = document.getElementById("todoWEList");
+	WEList.style.filter = "blur(5px)";
+	WEList.style.zIndex = "190";
+	WEList.style.opacity = "0";
+	
+var listAudits = document.getElementById("todoAudits");
+	listAudits.style.filter = "blur(5px)";
+	listAudits.style.zIndex = "200";
+	listAudits.style.opacity = "0";
+	
+var listLE = document.getElementById("todoLiveEdit");
+	listLE.style.filter = "blur(5px)";
+	listLE.style.zIndex = "100";
+	listLE.style.opacity = "0";
+	
+var listCREP = document.getElementById("todoCReport");
+	listCREP.style.filter = "blur(5px)";
+	listCREP.style.zIndex = "100";
+	listCREP.style.opacity = "0";
+	
+var raccoon = document.getElementById("Raccoon");
+	Raccoon.style.filter = "blur(5px)";
+	Raccoon.style.zIndex = "190";
+	Raccoon.style.opacity = "0";
+};
+
+// Account Reassignment list
+function switchReassign() {
+
+var listPTO = document.getElementById("todoPTO");
+	todoPTO.style.filter = "blur(5px)";
+	todoPTO.style.zIndex = "200";
+	todoPTO.style.opacity = "0";
+
+var listCancel = document.getElementById("todoPrjCancel");
+	todoPrjCancel.style.filter = "blur(5px)";
+	todoPrjCancel.style.zIndex = "200";
+	todoPrjCancel.style.opacity = "0";
+	
+var listReassign = document.getElementById("todoAccReassigned");
+	todoAccReassigned.style.filter = "blur(0px)";
+	todoAccReassigned.style.zIndex = "500";
+	todoAccReassigned.style.opacity = "1";
+	
+var listHidden = document.getElementById("myList");
+	myList.style.filter = "blur(5px)";
+	myList.style.zIndex = "200";
+	myList.style.opacity = "0";
+	
+var welcomer = document.getElementById("welcomeScreen");
+	welcomeScreen.style.filter = "blur(5px)";
+	welcomeScreen.style.zIndex = "190";
+	welcomeScreen.style.opacity = "0";
+	
+	var WEList = document.getElementById("todoWEList");
+	WEList.style.filter = "blur(5px)";
+	WEList.style.zIndex = "190";
+	WEList.style.opacity = "0";
+	
+var listAudits = document.getElementById("todoAudits");
+	listAudits.style.filter = "blur(5px)";
+	listAudits.style.zIndex = "200";
+	listAudits.style.opacity = "0";
+	
+var listLE = document.getElementById("todoLiveEdit");
+	listLE.style.filter = "blur(5px)";
+	listLE.style.zIndex = "100";
+	listLE.style.opacity = "0";
+
+var listCREP = document.getElementById("todoCReport");
+	listCREP.style.filter = "blur(5px)";
+	listCREP.style.zIndex = "100";
+	listCREP.style.opacity = "0";
+	
+var raccoon = document.getElementById("Raccoon");
+	Raccoon.style.filter = "blur(5px)";
+	Raccoon.style.zIndex = "190";
+	Raccoon.style.opacity = "0";
+};
+
+// WE Lists
+
+function switchWEList() {
+
+var listPTO = document.getElementById("todoPTO");
+	todoPTO.style.filter = "blur(5px)";
+	todoPTO.style.zIndex = "200";
+	todoPTO.style.opacity = "0";
+
+var listCancel = document.getElementById("todoPrjCancel");
+	todoPrjCancel.style.filter = "blur(5px)";
+	todoPrjCancel.style.zIndex = "200";
+	todoPrjCancel.style.opacity = "0";
+	
+var listReassign = document.getElementById("todoAccReassigned");
+	todoAccReassigned.style.filter = "blur(0px)";
+	todoAccReassigned.style.zIndex = "100";
+	todoAccReassigned.style.opacity = "0";
+	
+var listHidden = document.getElementById("myList");
+	myList.style.filter = "blur(5px)";
+	myList.style.zIndex = "200";
+	myList.style.opacity = "0";
+	
+var welcomer = document.getElementById("welcomeScreen");
+	welcomeScreen.style.filter = "blur(5px)";
+	welcomeScreen.style.zIndex = "190";
+	welcomeScreen.style.opacity = "0";
+	
+	var WEList = document.getElementById("todoWEList");
+	WEList.style.filter = "blur(0px)";
+	WEList.style.zIndex = "600";
+	WEList.style.opacity = "1";
+	
+var listAudits = document.getElementById("todoAudits");
+	listAudits.style.filter = "blur(5px)";
+	listAudits.style.zIndex = "200";
+	listAudits.style.opacity = "0";
+	
+var listLE = document.getElementById("todoLiveEdit");
+	listLE.style.filter = "blur(5px)";
+	listLE.style.zIndex = "100";
+	listLE.style.opacity = "0";
+
+var listCREP = document.getElementById("todoCReport");
+	listCREP.style.filter = "blur(5px)";
+	listCREP.style.zIndex = "100";
+	listCREP.style.opacity = "0";
+	
+var raccoon = document.getElementById("Raccoon");
+	Raccoon.style.filter = "blur(5px)";
+	Raccoon.style.zIndex = "190";
+	Raccoon.style.opacity = "0";
+};
+
+
+
+// Audits
+
+
+function switchAudits() {
+
+var listPTO = document.getElementById("todoPTO");
+	todoPTO.style.filter = "blur(5px)";
+	todoPTO.style.zIndex = "200";
+	todoPTO.style.opacity = "0";
+
+var listCancel = document.getElementById("todoPrjCancel");
+	todoPrjCancel.style.filter = "blur(5px)";
+	todoPrjCancel.style.zIndex = "200";
+	todoPrjCancel.style.opacity = "0";
+	
+var listReassign = document.getElementById("todoAccReassigned");
+	todoAccReassigned.style.filter = "blur(0px)";
+	todoAccReassigned.style.zIndex = "100";
+	todoAccReassigned.style.opacity = "0";
+	
+var listAudits = document.getElementById("todoAudits");
+	listAudits.style.filter = "blur(0px)";
+	listAudits.style.zIndex = "600";
+	listAudits.style.opacity = "1";
+	
+var listHidden = document.getElementById("myList");
+	myList.style.filter = "blur(5px)";
+	myList.style.zIndex = "200";
+	myList.style.opacity = "0";
+	
+var welcomer = document.getElementById("welcomeScreen");
+	welcomeScreen.style.filter = "blur(5px)";
+	welcomeScreen.style.zIndex = "190";
+	welcomeScreen.style.opacity = "0";
+	
+	var WEList = document.getElementById("todoWEList");
+	WEList.style.filter = "blur(5px)";
+	WEList.style.zIndex = "200";
+	WEList.style.opacity = "0";
+	
+var listLE = document.getElementById("todoLiveEdit");
+	listLE.style.filter = "blur(5px)";
+	listLE.style.zIndex = "100";
+	listLE.style.opacity = "0";
+	
+var listCREP = document.getElementById("todoCReport");
+	listCREP.style.filter = "blur(5px)";
+	listCREP.style.zIndex = "100";
+	listCREP.style.opacity = "0";
+	
+var raccoon = document.getElementById("Raccoon");
+	Raccoon.style.filter = "blur(5px)";
+	Raccoon.style.zIndex = "190";
+	Raccoon.style.opacity = "0";
+};
+
+
+
+
+
+function switchLiveEdit() {
+
+var listPTO = document.getElementById("todoPTO");
+	todoPTO.style.filter = "blur(5px)";
+	todoPTO.style.zIndex = "100";
+	todoPTO.style.opacity = "0";
+
+var listCancel = document.getElementById("todoPrjCancel");
+	todoPrjCancel.style.filter = "blur(5px)";
+	todoPrjCancel.style.zIndex = "100";
+	todoPrjCancel.style.opacity = "0";
+	
+var listReassign = document.getElementById("todoAccReassigned");
+	todoAccReassigned.style.filter = "blur(5px)";
+	todoAccReassigned.style.zIndex = "100";
+	todoAccReassigned.style.opacity = "0";
+	
+var listHidden = document.getElementById("myList");
+	myList.style.filter = "blur(5px)";
+	myList.style.zIndex = "100";
+	myList.style.opacity = "0";
+	
+var welcomer = document.getElementById("welcomeScreen");
+	welcomeScreen.style.filter = "blur(5px)";
+	welcomeScreen.style.zIndex = "190";
+	welcomeScreen.style.opacity = "0";
+	
+	var WEList = document.getElementById("todoWEList");
+	WEList.style.filter = "blur(5px)";
+	WEList.style.zIndex = "190";
+	WEList.style.opacity = "0";
+	
+var listAudits = document.getElementById("todoAudits");
+	listAudits.style.filter = "blur(5px)";
+	listAudits.style.zIndex = "100";
+	listAudits.style.opacity = "0";
+	
+var listLE = document.getElementById("todoLiveEdit");
+	listLE.style.filter = "blur(0px)";
+	listLE.style.zIndex = "600";
+	listLE.style.opacity = "1";
+	
+var listCREP = document.getElementById("todoCReport");
+	listCREP.style.filter = "blur(5px)";
+	listCREP.style.zIndex = "100";
+	listCREP.style.opacity = "0";
+	
+var raccoon = document.getElementById("Raccoon");
+	Raccoon.style.filter = "blur(5px)";
+	Raccoon.style.zIndex = "190";
+	Raccoon.style.opacity = "0";
+	
+};
+
+
+
+function switchCReport() {
+
+var listPTO = document.getElementById("todoPTO");
+	todoPTO.style.filter = "blur(5px)";
+	todoPTO.style.zIndex = "100";
+	todoPTO.style.opacity = "0";
+
+var listCancel = document.getElementById("todoPrjCancel");
+	todoPrjCancel.style.filter = "blur(5px)";
+	todoPrjCancel.style.zIndex = "100";
+	todoPrjCancel.style.opacity = "0";
+	
+var listReassign = document.getElementById("todoAccReassigned");
+	todoAccReassigned.style.filter = "blur(5px)";
+	todoAccReassigned.style.zIndex = "100";
+	todoAccReassigned.style.opacity = "0";
+	
+var listHidden = document.getElementById("myList");
+	myList.style.filter = "blur(5px)";
+	myList.style.zIndex = "100";
+	myList.style.opacity = "0";
+	
+var welcomer = document.getElementById("welcomeScreen");
+	welcomeScreen.style.filter = "blur(5px)";
+	welcomeScreen.style.zIndex = "190";
+	welcomeScreen.style.opacity = "0";
+	
+	var WEList = document.getElementById("todoWEList");
+	WEList.style.filter = "blur(5px)";
+	WEList.style.zIndex = "190";
+	WEList.style.opacity = "0";
+	
+var listAudits = document.getElementById("todoAudits");
+	listAudits.style.filter = "blur(5px)";
+	listAudits.style.zIndex = "100";
+	listAudits.style.opacity = "0";
+	
+var listLE = document.getElementById("todoLiveEdit");
+	listLE.style.filter = "blur(5px)";
+	listLE.style.zIndex = "100";
+	listLE.style.opacity = "0";
+	
+var listCREP = document.getElementById("todoCReport");
+	listCREP.style.filter = "blur(0px)";
+	listCREP.style.zIndex = "600";
+	listCREP.style.opacity = "1";
+	
+var raccoon = document.getElementById("Raccoon");
+	Raccoon.style.filter = "blur(5px)";
+	Raccoon.style.zIndex = "190";
+	Raccoon.style.opacity = "0";
+	
+};
+
+
+
+
+
+
+function switchMyList() {
+
+var listPTO = document.getElementById("todoPTO");
+	todoPTO.style.filter = "blur(5px)";
+	todoPTO.style.zIndex = "200";
+	todoPTO.style.opacity = "0";
+
+var listCancel = document.getElementById("todoPrjCancel");
+	todoPrjCancel.style.filter = "blur(5px)";
+	todoPrjCancel.style.zIndex = "200";
+	todoPrjCancel.style.opacity = "0";
+	
+var listReassign = document.getElementById("todoAccReassigned");
+	todoAccReassigned.style.filter = "blur(5px)";
+	todoAccReassigned.style.zIndex = "200";
+	todoAccReassigned.style.opacity = "0";
+	
+var listHidden = document.getElementById("myList");
+	myList.style.filter = "blur(0px)";
+	myList.style.zIndex = "500";
+	myList.style.opacity = "1";
+	
+var welcomer = document.getElementById("welcomeScreen");
+	welcomeScreen.style.filter = "blur(5px)";
+	welcomeScreen.style.zIndex = "190";
+	welcomeScreen.style.opacity = "0";
+	
+	var WEList = document.getElementById("todoWEList");
+	WEList.style.filter = "blur(5px)";
+	WEList.style.zIndex = "190";
+	WEList.style.opacity = "0";
+	
+var listAudits = document.getElementById("todoAudits");
+	listAudits.style.filter = "blur(5px)";
+	listAudits.style.zIndex = "200";
+	listAudits.style.opacity = "0";
+	
+var listLE = document.getElementById("todoLiveEdit");
+	listLE.style.filter = "blur(5px)";
+	listLE.style.zIndex = "100";
+	listLE.style.opacity = "0";
+	
+var listCREP = document.getElementById("todoCReport");
+	listCREP.style.filter = "blur(5px)";
+	listCREP.style.zIndex = "100";
+	listCREP.style.opacity = "0";
+	
+var raccoon = document.getElementById("Raccoon");
+	Raccoon.style.filter = "blur(5px)";
+	Raccoon.style.zIndex = "190";
+	Raccoon.style.opacity = "0";
+	
+
+// Loading the list from local storage once the page is loaded || THIS NEEDS ATTENTION AS NOW IT LOADS THE LIST EVERY TIME YOU PRESS "My List"
+
+
+
+
+var retrieveList = localStorage.getItem("tamList");
+		console.log(retrieveList);
+	var newUL = JSON.parse(retrieveList);
+		console.log(newUL.length);
+	var list = document.getElementById("ulMyList");
+	list.setAttribute("id", "ulMyList");
+		console.log("Created UL");
+	for (var i = 0; i < newUL.length; i++) {
+		var item = document.createElement("li");
+		item.appendChild(document.createTextNode(newUL[i]));
+		list.appendChild(item);
+	}
+	return list;
+	
+	document.getElementById("ulMyList").appendChild(switchMyList());
+
+};
+
+
+
+</script>
+
+<script>
+// Fancy loading of the whole page for the first start
+
+setTimeout(function() {
+	var curtain = document.getElementById("screenCurtain");
+	curtain.style.opacity = "0";
+	curtain.style.pointerEvents = "none";
+	var loading = document.getElementById("loader");
+	loading.style.opacity = "0";},900);
+
+</script>
+
+</div>
+
+<style>
+/* CUSTOM SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+    width: 1px;
+	height: 1px;
+	display: none;
+	
+
+	
+	
+	
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: linear-gradient(-45deg, #4f4f4f, #423e3e, #282525);
+	
+	
+	
+	
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: linear-gradient(to bottom, #6e529d 0%,#d97b93 100%);
+border-radius:10px;
+    max-height: 1px;
+    width: 1px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+   -moz-box-shadow:    inset 1px 1px 3px #3a0000;
+   -webkit-box-shadow: inset 1px 1px 3px #3a0000;
+   box-shadow:         inset 1px 1px 3px #3a0000;
+}
+</style>
+</body>
+
+
+</html>

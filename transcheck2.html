@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" class="vh-100">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <title>TransCheck 2.0a</title>
+  </head>
+  <body>
+    <!-- <div class="col-12 row align-items-start"><div class="col d-none d-md-block">&nbsp;</div></div> -->
+    <div class="col-12 row align-items-start"><div class="col d-none d-md-block">&nbsp;</div></div>
+    <div class="col-12 row align-items-start"><div class="col d-none d-md-block">&nbsp;</div></div>
+    <div class="col-12 row align-items-start"><div class="col d-none d-md-block">&nbsp;</div></div>
+    <div class="col-12 row align-items-start"><div class="col d-none d-md-block">&nbsp;</div></div>
+    <div class="col-12 row align-items-start"><div class="col d-none d-md-block">&nbsp;</div></div>
+    <div class="col-12 row align-items-start"><div class="col d-none d-md-block">&nbsp;</div></div>
+    <div class="col-12 row align-items-start"><div class="col d-none d-md-block">&nbsp;</div></div>
+    <div id="mainBox" class="row col-12 col-sm-10 col-lg-6 mx-auto">
+        <div class="col-12 row align-items-start"><div class="col d-none d-sm-block">&nbsp;</div></div>
+        <p id="appTitle" class="fs-2">TransCheck</p>
+        <div id="topMenu" class="btn-group flex-wrap">
+            <!-- Buttons to activate modals with the content -->
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#ptoChecklist">PTO Checklist</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projCancel">Pr. Cancellation</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#accReassign">Acc. Reassign.</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#weGroups">WE Groups</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#audits">Audits</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#lEdit">LiveEdit</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#conOpt">Content Opt.</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myTasks">My Tasks</button>
+            
+            <!-- Modal bodies go here -->
+            <!-- PTO MODAL -->
+            <div class="modal fade" id="ptoChecklist" tabindex="-1" aria-labelledby="ptoChecklistLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">PTO Checklist</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="ptorCheckListBox">
+                            <p class="justify-content-center text-start">First you need to request PTO, here's what to do:</p>
+                            <input type="checkbox" class="btn-check" id="ptorStep1" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="ptorStep1">Review current PTO calendar to see if anyone else has planned to be out those days</label><br>
+                            <input type="checkbox" class="btn-check" id="ptorStep2" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="ptorStep2">Notify the team on your PTO/OOO plans via Teams</label><br>
+                            <input type="checkbox" class="btn-check" id="ptorStep3" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="ptorStep3">Coordinate the accounts with back ups in case your PTO overlaps with other members</label><br>
+                            <input type="checkbox" class="btn-check" id="ptorStep4" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="ptorStep4">Add your PTO to the Sharepoint Calendar</label><br>
+                            <input type="checkbox" class="btn-check" id="ptorStep5" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="ptorStep5">When confirmed, create a request in ADP system</label><br>
+                        </div>
+                        <br>
+                            <p class="justify-content-center text-start">Now that your PTO is approved, do the following:</p>
+                         <div id="ptoCheckListBox">
+                            <input type="checkbox" class="btn-check" id="ptoStep1" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="ptoStep1">Example Checklist</label><br>
+                        </div>
+                    </div>
+                </div>
+            
+                </div>
+            </div>
+            
+            <!-- Project Cancellation Modal -->
+            <div class="modal fade" id="projCancel" tabindex="-1" aria-labelledby="projCancelLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Project Cancellation Checklist</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="projCancelCheckList">
+                            <p class="justify-content-center text-start">So, one of the accounts is either cancelling a project or the account itself? No worries, here's what you should do:</p>
+                            <input type="checkbox" class="btn-check" id="projCancelStep1" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="projCancelStep1">Example Checklist</label><br>
+                        </div>
+                        
+                    </div>
+                </div>
+            
+                </div>
+            </div>
+            
+            
+            <!-- Account Reassign Modal -->
+            <div class="modal fade" id="accReassign" tabindex="-1" aria-labelledby="accReassignLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Project Cancellation Checklist</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="accReassignCheckList">
+                            <p class="justify-content-center text-start">Well well, you are about to give your account to someone else! Here's what you do:</p>
+                            <input type="checkbox" class="btn-check" id="accReassignStep1" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="accReassignStep1">Example Checklist</label><br>
+                        </div>
+                        
+                    </div>
+                </div>
+            
+                </div>
+            </div>
+            
+            
+            
+            <!-- WE groups lists -->
+            <div class="modal fade" id="weGroups" tabindex="-1" aria-labelledby="weGroupsLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Web Engineering Groups | Tasks distribution</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="weGroupsCheckList">
+                            <p class="justify-content-center text-start">We have a lot of WE groups here, pay attention:</p>
+                            <p id="weMisalignemtn" class="justify-content-center text-center" style="background:#0061d5; border-radius:10px; color:white;">WE - Misalignment</p>
+                            <input type="checkbox" class="btn-check" id="weGroupsLists" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="weGroupsLists">Visual element on a page is misaligned compared to origin</label><br><hr/><br>
+                            <p id="weMisalignemtn" class="justify-content-center text-center" style="background:#0061d5; border-radius:10px; color:white;">WE - Translation</p>
+                            <input type="checkbox" class="btn-check" id="weGroupsLists" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="weGroupsLists">Appendix A, Rules (A/B/C/D/), Scope, URL entries</label><br>
+                        </div>
+                        
+                    </div>
+                </div>
+            
+                </div>
+            </div>
+            
+            <!--Audits Modal -->
+            <div class="modal fade" id="audits" tabindex="-1" aria-labelledby="auditsLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Audits Process</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="auditsCheckListBox">
+                            <p class="justify-content-center text-start">Here's what you need to do when you get audit request ticket:</p>
+                            <input type="checkbox" class="btn-check" id="auditsStep1" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="auditsStep1">Example Checklist</label><br>
+                        </div>
+                        <br>
+                            <p class="justify-content-center text-start">After that, please do this:</p>
+                         <div id="ptoCheckListBox">
+                            <input type="checkbox" class="btn-check" id="auditsStep2" autocomplete="off">
+                            <label class="btn btn-outline-primary col-12 text-start" for="auditsStep2">Example Checklist</label><br>
+                        </div>
+                    </div>
+                </div>
+            
+                </div>
+            </div>
+            
+            <!-- LiveEdit Modal -->
+            <div class="modal fade" id="lEdit" tabindex="-1" aria-labelledby="lEditLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">LiveEdit Tips and Tricks</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="lEditCheckList">
+                                <p class="justify-content-center text-start">LiveEdit tips and tricks window is empty for now. We need to fill it up :(</p>
+                                <input type="checkbox" class="btn-check" id="leStep1" autocomplete="off">
+                                <label class="btn btn-outline-primary col-12 text-start" for="leStep1">Example Checklist</label><br>
+                            </div>
+                        
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+            
+            <!-- Content Optimization Modal -->
+            <div class="modal fade" id="conOpt" tabindex="-1" aria-labelledby="conOptLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Content Optimization Report Flow</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="conOptCheckList">
+                                <p class="justify-content-center text-start">You cannot follow the flow for now as we're revamping it. Stay tuned, I'm asking Alex Moser on the update!</p>
+                                <input type="checkbox" class="btn-check" id="conOptStep1" autocomplete="off">
+                                <label class="btn btn-outline-primary col-12 text-start" for="conOptStep1">Example Checklist</label><br>
+                            </div>
+                        
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+            
+            <!-- My Tasks Modal -->
+            <div class="modal fade" id="myTasks" tabindex="-1" aria-labelledby="myTasksLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">My Tasks / My Lists</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="myTasksCheckList">
+                                <p class="justify-content-center text-start">Here you will be able to create your own checklists for while the TransCheck is opened in your browser. This feature is NOT working currently. Stay tuned for the updates...</p>
+                                <input type="checkbox" class="btn-check" id="myTasksStep1" autocomplete="off">
+                                <label class="btn btn-outline-primary col-12 text-start" for="myTasksStep1">Example Checklist</label><br>
+                            </div>
+                        
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            
+            
+            
+            
+            
+            <!-- END OF MODALS -->
+            
+        <div class="col-12 row"><div class="col d-block">&nbsp;</div></div>
+        
+        
+        <div id="mainWindow" class="row col-12 col-md-11 mx-auto">
+          <p id="demoText1" class="text-center fs-2 d-none d-md-block">Welcome!</p>
+          <p id="demoText2" class="d-none d-md-block ">Hello and welcome to <strong>TransCheck</strong>. A little tool to help keep all important procedures in one place in a convenient step-by-step form.<br><br>
+
+            You can mark any step as done by simply clicking on it. Test the one below and please select an option above to switch to the desired list.</p>
+            <br>
+            <br>
+            <br>
+            <div id="demoCheckListBox">
+                <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+                <label class="btn btn-outline-primary col-12 text-start" for="btn-check-outlined">Example Checklist</label><br>
+            </div>
+            <br>
+            <br>
+            <br>
+           
+          
+            
+        </div>
+        <div class="col-12 row align-items-start"><div class="col d-block">&nbsp;</div></div>
+        <div class="col-12 row align-items-start"><div class="col d-block">&nbsp;</div></div>
+              
+          
+        
+        
+        
+        
+    </div>
+    <div class="col-12 row align-items-start"><div class="col d-block">&nbsp;</div></div>
+    <div class="col-12 row align-items-start"><div class="col d-block">&nbsp;</div></div>
+        
+    <div id="footerAd" class="row d-none d-md-block col-12 mx-auto">
+        <p class="justify-content-center text-center">TransCheck tool &#169; 2023</p>
+    </div>
+      
+    </div>
+      
+    
+    
+      
+    <div class="col-12 row align-items-start"><div class="col d-block">&nbsp;</div></div>
+    <div class="col-12 row align-items-start"><div class="col d-block">&nbsp;</div></div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+
+  <style>
+      #mainBox {
+          box-shadow: 0px 0px 15px rgb(25, 33, 43);
+          border-radius: 15px;
+          overflow: hidden;
+          background: white;
+          
+      }
+      #mainWindow {
+          border-color: rgb(201, 201, 201);
+          border-radius: 15px;
+          border-style: solid;
+          border-width: 1px;
+          overflow: hidden;
+          
+      }
+      #appTitle {
+        font-family: 'Fjalla One', sans-serif;
+      }
+      .mainButtons {
+          border-color: black;
+          border-radius: 15px;
+          border-style: solid;
+          border-width: 1px;
+          padding: 10px;
+      }
+      .btn-outline-primary {
+        border-radius: 10px !important;
+      }
+      
+      #demoText2 {
+        font-family: 'Lato', sans-serif;
+        font-size: 1.25rem;
+      }
+      body {
+        background: linear-gradient(to bottom, rgba(0,38,64,1) 0%, rgba(5,51,138,1) 100%);
+        
+      }
+
+      ul {
+        list-style-type: none;
+      }
+      
+      #testP {
+          border-color:red;
+          border-radius:10px;
+          border-style:dotted;
+          border-width: 2px;
+      }
+  </style>
+—</html>
